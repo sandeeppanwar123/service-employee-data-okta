@@ -1,0 +1,28 @@
+plugins {
+    id 'org.springframework.boot' version '2.2.0.M5'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'java'
+}
+
+group = 'com.daffodil'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://repo.spring.io/milestone' }
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+
+    runtimeOnly 'com.h2database:h2'
+    implementation 'com.okta.spring:okta-spring-boot-starter:1.2.1'
+    implementation 'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.1.0.RELEASE'
+
+
+    implementation 'org.glassfish.jaxb:jaxb-runtime'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}

@@ -1,0 +1,40 @@
+#server:
+#  port: 8080
+#  session:
+#    cookie:
+#      name: UISESSION
+#spring:
+#  profile:
+#    name: custom
+#  security:
+#    oauth2:
+#      client:
+#        registration:
+#          custom-client:
+#            client-id: 0oatxh6tcxoTqA5YQ356
+#            client-secret: soVr2KDoFeqMXvP5GgRWtaCFrnl3Kvt8q97DdFjx
+#            client-name: Auth Server
+#            scope: user_info
+#            provider: custom-provider
+#            redirect-uri-template: http://localhost:8082/employee/get/2776
+#            client-authentication-method: basic
+#            authorization-grant-type: authorization_code
+#        provider:
+#          custom-provider:
+#            token-uri: https://dev-564791.okta.com/oauth2/default/v1/token
+#            authorization-uri: https://dev-564791.okta.com/oauth2/default/v1/authorize
+#            user-info-uri: https://dev-564791.okta.com/oauth2/default/v1/userinfo
+#            user-name-attribute: name
+#            callback-uri: https://www.getpostman.com/oauth2/callback
+#
+#---
+#spring:
+#  profile:
+#    active: okta
+okta:
+  oauth2:
+    client-id: 0oa17lem3hYjBgn2S357
+    issuer: https://dev-564791.okta.com/oauth2/default
+
+
+
