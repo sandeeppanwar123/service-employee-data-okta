@@ -1,4 +1,4 @@
-package com.daffodil.entity;
+package com.daffodil.model.entity;
 
 public enum Department {
 

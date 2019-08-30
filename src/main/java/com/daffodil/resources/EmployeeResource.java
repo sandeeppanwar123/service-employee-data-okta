@@ -1,6 +1,6 @@
 package com.daffodil.resources;
 
-import com.daffodil.dto.EmployeeDTO;
+import com.daffodil.model.api.EmployeeDTO;
 import com.daffodil.exception.EmployeeException;
 import com.daffodil.mapper.EmployeeMapper;
 import com.daffodil.service.EmployeeService;
@@ -11,10 +11,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static com.daffodil.resources.UrlConstants.*;
+
 
 @RestController
-@RequestMapping("/employee")
+@RequestMapping(VERSIONED_API)
 public class EmployeeResource {
+
     private static final Logger logger = LoggerFactory.getLogger(EmployeeResource.class);
     private EmployeeService employeeService;
 
@@ -23,22 +26,22 @@ public class EmployeeResource {
     }
 
     @CrossOrigin
-    @PostMapping(value = "/create")
+    @PostMapping()
     public ResponseEntity<EmployeeDTO> create(@RequestBody EmployeeDTO employeeDTO) throws EmployeeException {
         logger.info("creating employee with employeeId :" + employeeDTO.getEmployeeId());
         return ResponseEntity.ok()
                 .header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT, OPTIONS")
-                .body(EmployeeMapper.map(employeeService.addEmployee(employeeDTO)));
+                .body(EmployeeMapper.map(employeeService.addEmployee(EmployeeMapper.map(employeeDTO))));
     }
 
-    @PutMapping(value = "/update")
+    @PutMapping()
     public EmployeeDTO update(@RequestBody EmployeeDTO employeeDTO) throws EmployeeException {
         logger.info("updating employee with employeeId :" + employeeDTO.getEmployeeId());
-        return EmployeeMapper.map(employeeService.updateEmployee(employeeDTO));
+        return EmployeeMapper.map(employeeService.updateEmployee(EmployeeMapper.map(employeeDTO)));
     }
 
     @CrossOrigin
-    @GetMapping(value = "/get/{empId}")
+    @GetMapping(value = EMP_ID)
     public ResponseEntity<EmployeeDTO> getEmployee(@PathVariable Integer empId) throws EmployeeException {
         logger.info("getting employee details for employeeId :" + empId);
 
@@ -47,10 +50,8 @@ public class EmployeeResource {
                 .body(EmployeeMapper.map(employeeService.getEmployee(empId)));
 
     }
-
-
     @CrossOrigin
-    @GetMapping(value = "/get")
+    @GetMapping()
     public ResponseEntity<List<EmployeeDTO>> getEmployee() {
         logger.info("Loading all avaialble employee...");
 
@@ -60,7 +61,7 @@ public class EmployeeResource {
 
     }
 
-    @DeleteMapping(value = "/delete/{empId}")
+    @DeleteMapping(value = EMP_ID)
     public String deleteEmployee(@PathVariable Integer empId) throws EmployeeException {
         logger.info("deleting employee details for employeeId :" + empId);
         employeeService.deleteEmployee(empId);

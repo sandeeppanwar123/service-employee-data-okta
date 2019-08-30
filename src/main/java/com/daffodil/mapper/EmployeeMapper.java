@@ -1,7 +1,7 @@
 package com.daffodil.mapper;
 
-import com.daffodil.dto.EmployeeDTO;
-import com.daffodil.entity.EmployeeEntity;
+import com.daffodil.model.api.EmployeeDTO;
+import com.daffodil.model.entity.EmployeeEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,10 +24,7 @@ public class EmployeeMapper {
                 .setEmployeeId(employeeEntity.getEmployeeId())
                 .setEmployeeName(employeeEntity.getEmployeeName())
                 .setAddress(employeeEntity.getAddresses())
-                .setEmployementType(employeeEntity.getEmployementType())
-                ;
-
-
+                .setEmployementType(employeeEntity.getEmployementType());
     }
 
     public static List<EmployeeDTO> map(List<EmployeeEntity> employeeList) {

@@ -1,9 +1,8 @@
 package com.daffodil.service;
 
-import com.daffodil.dto.EmployeeDTO;
-import com.daffodil.entity.EmployeeEntity;
+import com.daffodil.model.entity.EmployeeEntity;
 import com.daffodil.exception.EmployeeException;
-import com.daffodil.mapper.EmployeeMapper;
+
 import com.daffodil.repository.EmployeeRepository;
 import org.springframework.stereotype.Service;
 
@@ -19,12 +18,12 @@ public class EmployeeService {
         this.employeeRepository = employeeRepository;
     }
 
-    public EmployeeEntity addEmployee(EmployeeDTO employeeDTO) throws EmployeeException {
-        if (isEmployeeExist(employeeDTO.getEmployeeId())) {
-            throw new EmployeeException("Employee already exist with given employeeId: " + employeeDTO.getEmployeeId()
+    public EmployeeEntity addEmployee(EmployeeEntity employeeEntity) throws EmployeeException {
+        if (isEmployeeExist(employeeEntity.getEmployeeId())) {
+            throw new EmployeeException("Employee already exist with given employeeId: " + employeeEntity.getEmployeeId()
             );
         } else
-            return employeeRepository.save(EmployeeMapper.map(employeeDTO));
+            return employeeRepository.save(employeeEntity);
     }
 
     private boolean isEmployeeExist(Integer employeeId) {
@@ -32,13 +31,13 @@ public class EmployeeService {
     }
 
     @Transactional
-    public EmployeeEntity updateEmployee(EmployeeDTO employeeDTO) throws EmployeeException {
-        if (!isEmployeeExist(employeeDTO.getEmployeeId())) {
-            throw new EmployeeException("Employee does not exist with given employeeId: " + employeeDTO.getEmployeeId()
+    public EmployeeEntity updateEmployee(EmployeeEntity employeeEntity) throws EmployeeException {
+        if (!isEmployeeExist(employeeEntity.getEmployeeId())) {
+            throw new EmployeeException("Employee does not exist with given employeeId: " + employeeEntity.getEmployeeId()
             );
         }
         return employeeRepository
-                .save(EmployeeMapper.map(employeeDTO));
+                .save(employeeEntity);
     }
 
     @Transactional

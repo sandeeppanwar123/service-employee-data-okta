@@ -31,10 +31,10 @@
 #spring:
 #  profile:
 #    active: okta
-okta:
-  oauth2:
-    client-id: 0oa17lem3hYjBgn2S357
-    issuer: https://dev-564791.okta.com/oauth2/default
+#okta:
+#  oauth2:
+#    client-id: 0oa17lem3hYjBgn2S357
+#    issuer: https://dev-564791.okta.com/oauth2/default
 
 
 

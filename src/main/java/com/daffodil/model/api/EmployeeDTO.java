@@ -1,8 +1,8 @@
-package com.daffodil.dto;
+package com.daffodil.model.api;
 
-import com.daffodil.entity.Address;
-import com.daffodil.entity.Department;
-import com.daffodil.entity.EmployeeEntity;
+import com.daffodil.model.entity.Address;
+import com.daffodil.model.entity.Department;
+import com.daffodil.model.entity.EmployeeEntity;
 
 import java.util.Set;
 
